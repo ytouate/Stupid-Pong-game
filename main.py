@@ -23,7 +23,6 @@ while game_is_on:
     time.sleep(ball.BallSpeed)
     screen.update()
     ball.move_ball()
-    print(ball.BallSpeed)
     # if the right paddle misses
     if ball.xcor() > 380:
         ball.reset_position()
@@ -43,7 +42,8 @@ while game_is_on:
     if ball.distance(paddle) < 40 and ball.xcor() > 320 \
             or ball.distance(l_paddle) < 40 and ball.xcor() < -320:
         ball.bounce_x()
-        ball.update_speed()
+        if ball.BallSpeed < 0.1:
+            ball.update_speed()
 
 
 screen.exitonclick()
